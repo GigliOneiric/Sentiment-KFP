@@ -1,15 +1,21 @@
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
 metadata:
-  name: kubeflow-gateway
+  name: seldon-sentiment
   namespace: kubeflow-user-example-com
 spec:
-  selector:
-    istio: ingressgateway
-  servers:
-  - hosts:
-    - '*'
-    port:
-      name: http
-      number: 80
-      protocol: HTTP
+  name: seldon-sentiment
+  predictors:
+  - componentSpecs:
+    - spec:
+        containers:
+        - image: seldon-sentiment:0.1
+          name: classifier
+    graph:
+      children: []
+      endpoint:
+        type: REST
+      name: sentiment
+      type: MODEL
+    name: example
+    replicas: 1
