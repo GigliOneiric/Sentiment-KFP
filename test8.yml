@@ -10,7 +10,7 @@ spec:
     - spec:
         containers:
         - image: seldon-sentiment:0.1
-          name: classifier
+          name: sentiment
     graph:
       children: []
       endpoint:
