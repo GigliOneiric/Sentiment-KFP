@@ -1,0 +1,17 @@
+apiVersion: machinelearning.seldon.io/v1alpha2        
+                    kind: SeldonDeployment
+                    metadata:
+                      name: seldon-model
+                      namespace: kubeflow-user-example-com
+                    spec:
+                      name: seldon
+                      predictors:
+                      - componentSpecs:
+                        - spec:
+                            containers:
+                            - name: classifier
+                              image: seldon-sentiment:0.1
+                        graph:
+                          name: classifier
+                        name: default
+                        replicas: 1
