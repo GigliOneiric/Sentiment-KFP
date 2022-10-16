@@ -1,16 +1,13 @@
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
+kind: AuthorizationPolicy
 metadata:
-  name: seldon-gateway
-  namespace: istio-system
+  labels:
+    app.kubernetes.io/managed-by: seldon-core
+  name: seldon
+  namespace: seldon
 spec:
+  action: ALLOW
+  rules:
+  - {}
   selector:
-    app: istio-ingressgateway
-    istio: ingressgateway
-  servers:
-    - hosts:
-        - "*"
-      port:
-        name: http
-        number: 80
-        protocol: HTTP
+    matchLabels:
+      app.kubernetes.io/managed-by: seldon-core
