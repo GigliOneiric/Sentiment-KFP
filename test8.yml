@@ -1,15 +1,33 @@
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: seldon-gateway
-  namespace: istio-system
-spec:
-  selector:
-    istio: ingressgateway # use istio default controller
-  servers:
-  - port:
-      number: 80
-      name: http
-      protocol: HTTP
-    hosts:
-    - "*"
+                    apiVersion: machinelearning.seldon.io/v1alpha2
+                    kind: SeldonDeployment
+                    metadata:
+                      labels:
+                        app: seldon
+                      name: seldon-sentiment2
+                      namespace: kubeflow
+                    spec:
+                      annotations:
+                        project_name: NLP Pipeline
+                        deployment_version: v1
+                      name: seldon-sentiment2
+                      predictors:
+                      - componentSpecs:
+                        - spec:
+                            containers:
+                            - image: seldon-sentiment:0.1
+                              imagePullPolicy: IfNotPresent
+                              name: sentiment
+                              resources:
+                                requests:
+                                  memory: 1Mi
+                            terminationGracePeriodSeconds: 20
+                        graph:
+                          children: []
+                          endpoint:
+                            type: REST
+                          name: sentiment
+                          type: MODEL
+                        name: sentiment
+                        replicas: 1
+                        annotations:
+                          predictor_version: v1
