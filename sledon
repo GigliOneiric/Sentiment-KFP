@@ -4,7 +4,7 @@ metadata:
   labels:
     app: seldon
   name: seldon-sentiment
-  namespace: kubeflow-user-example-com
+  namespace: foo
 spec:
   annotations:
     project_name: NLP Pipeline
