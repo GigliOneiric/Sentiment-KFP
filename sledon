@@ -14,7 +14,6 @@ spec:
       protocol: HTTP
   configPatches:
     - applyTo: HTTP_FILTER
-      ...
       match:
         context: GATEWAY
         listeners:
