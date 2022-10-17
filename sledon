@@ -13,3 +13,11 @@ spec:
       name: http
       number: 80
       protocol: HTTP
+   tls:
+      httpsRedirect: true
+ - hosts:
+    - '*'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP      
