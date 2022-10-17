@@ -1,16 +1,24 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
+  generation: 1
   name: kubeflow-gateway
+  namespace: kubeflow
 spec:
   selector:
     istio: ingressgateway
   servers:
-  - hosts:
-    - '*'
-    port:
-      name: http
-      number: 80
-      protocol: HTTP
-    tls:
-      httpsRedirect: true
+    - hosts:
+        - '*'
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+    - hosts:
+        - '*'
+      port:
+        number: 443
+        name: https-443
+        protocol: HTTP
