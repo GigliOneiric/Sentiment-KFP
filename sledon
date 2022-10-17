@@ -1,33 +1,33 @@
-                    apiVersion: machinelearning.seldon.io/v1
-                    kind: SeldonDeployment
-                    metadata:
-                      labels:
-                        app: seldon
-                      name: seldon-sentiment
-                      namespace: foo
-                    spec:
-                      annotations:
-                        project_name: NLP Pipeline
-                        deployment_version: v1
-                      name: seldon-sentiment
-                      predictors:
-                      - componentSpecs:
-                        - spec:
-                            containers:
-                            - image: localhost:5000/seldon-sentiment:0.1
-                              imagePullPolicy: IfNotPresent
-                              name: sentiment
-                              resources:
-                                requests:
-                                  memory: 1Mi
-                            terminationGracePeriodSeconds: 20
-                        graph:
-                          children: []
-                          endpoint:
-                            type: REST
-                          name: sentiment
-                          type: MODEL
-                        name: sentiment
-                        replicas: 1
-                        annotations:
-                          predictor_version: v1
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  labels:
+    app: seldon
+  name: seldon-sentiment
+  namespace: foo
+spec:
+  annotations:
+    project_name: NLP Pipeline
+    deployment_version: v1
+  name: seldon-sentiment
+  predictors:
+    - componentSpecs:
+        - spec:
+            containers:
+              - image: 'localhost:5000/seldon-sentiment:0.1'
+                imagePullPolicy: IfNotPresent
+                name: sentiment
+                resources:
+                  requests:
+                    memory: 1Mi
+            terminationGracePeriodSeconds: 20
+      graph:
+        children: []
+        endpoint:
+          type: REST
+        name: sentiment
+        type: MODEL
+      name: sentiment
+      replicas: 1
+      annotations:
+        predictor_version: v1
