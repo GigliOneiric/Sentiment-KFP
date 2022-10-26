@@ -17,24 +17,6 @@ spec:
               - image: 'localhost:5000/seldon-sentiment:0.1'
                 imagePullPolicy: IfNotPresent
                 name: sentiment
-                livenessProbe:
-                  initialDelaySeconds: 80
-                  failureThreshold: 200
-                  periodSeconds: 5
-                  successThreshold: 1
-                  httpGet:
-                    path: /health/ping
-                    port: http
-                    scheme: HTTP
-                readinessProbe:
-                  initialDelaySeconds: 80
-                  failureThreshold: 200
-                  periodSeconds: 5
-                  successThreshold: 1
-                  httpGet:
-                    path: /health/ping
-                    port: http
-                    scheme: HTTP
                 command: [ "/bin/bash", "-c", "--" ]
                 args: [ "while true; do sleep 30; done;" ]
                 volumeMounts:
