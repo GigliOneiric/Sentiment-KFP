@@ -2,14 +2,14 @@ apiVersion: machinelearning.seldon.io/v1
 kind: SeldonDeployment
 metadata:
   labels:
-    app: seldon
-  name: seldon-sentiment
+    app: seldon2
+  name: seldon-sentiment2
   namespace: kubeflow-user-example-com
 spec:
   annotations:
     project_name: NLP Pipeline
-    deployment_version: v2
-  name: seldon-sentiment
+    deployment_version: v1
+  name: seldon-sentiment2
   predictors:
     - componentSpecs:
         - spec:
