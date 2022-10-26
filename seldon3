@@ -25,7 +25,7 @@ spec:
                     memory: 1Mi
             terminationGracePeriodSeconds: 20
             volumes:
-            - name: mypvc
+            - name: model-volume
               persistentVolumeClaim:
                 claimName: model-volume
       graph:
