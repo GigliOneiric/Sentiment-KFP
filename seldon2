@@ -19,6 +19,9 @@ spec:
                 name: sentiment
                 command: [ "/bin/bash", "-c", "--" ]
                 args: [ "while true; do sleep 30; done;" ]
+                ports:
+                  - containerPort: 8080
+                    name: http
                 volumeMounts:
                   - name: model-volume
                     mountPath: /mnt
