@@ -19,6 +19,24 @@ spec:
                 name: sentiment
                 command: [ "/bin/bash", "-c", "--" ]
                 args: [ "while true; do sleep 30; done;" ]
+                          livenessProbe:
+                initialDelaySeconds: 80
+                failureThreshold: 200
+                periodSeconds: 5
+                successThreshold: 1
+                httpGet:
+                  path: /health/ping
+                  port: http
+                  scheme: HTTP
+              readinessProbe:
+                initialDelaySeconds: 80
+                failureThreshold: 200
+                periodSeconds: 5
+                successThreshold: 1
+                httpGet:
+                  path: /health/ping
+                  port: http
+                  scheme: HTTP
                 volumeMounts:
                   - name: model-volume
                     mountPath: /mnt
