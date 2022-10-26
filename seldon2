@@ -20,7 +20,7 @@ spec:
                 command: [ "/bin/bash", "-c", "--" ]
                 args: [ "while true; do sleep 30; done;" ]
                 volumeMounts:
-                  - name: pvc-87c46a54-7856-4586-8584-7a015c6656f2
+                  - name: model-volume
                     mountPath: /mnt
                 resources:
                   requests:
