@@ -3,7 +3,7 @@ kind: SeldonDeployment
 metadata:
   labels:
     app: seldon
-  name: seldon-sentimentt
+  name: seldon-sentiment
   namespace: kubeflow-user-example-com
 spec:
   annotations:
