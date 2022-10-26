@@ -18,12 +18,16 @@ spec:
                 imagePullPolicy: IfNotPresent
                 name: sentiment
                 volumeMounts:
-                  - name: kubeflow-user-example-com/model-volume
+                  - name: model-volume
                     mountPath: /mnt
                 resources:
                   requests:
                     memory: 1Mi
             terminationGracePeriodSeconds: 20
+            volumes:
+            - name: mypvc
+              persistentVolumeClaim:
+                claimName: model-volume
       graph:
         children: []
         endpoint:
