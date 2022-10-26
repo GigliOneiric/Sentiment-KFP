@@ -2,14 +2,14 @@ apiVersion: machinelearning.seldon.io/v1
 kind: SeldonDeployment
 metadata:
   labels:
-    app: seldon2
-  name: seldon-sentiment2
+    app: seldon
+  name: seldon-sentiment
   namespace: kubeflow-user-example-com
 spec:
   annotations:
     project_name: NLP Pipeline
     deployment_version: v1
-  name: seldon-sentiment2
+  name: seldon-sentiment
   predictors:
     - componentSpecs:
         - spec:
@@ -17,6 +17,8 @@ spec:
               - image: 'localhost:5000/seldon-sentiment:0.1'
                 imagePullPolicy: IfNotPresent
                 name: sentiment
+                command: [ "/bin/bash", "-c", "--" ]
+                args: [ "while true; do sleep 30; done;" ]
                 volumeMounts:
                   - name: model-volume
                     mountPath: /mnt
