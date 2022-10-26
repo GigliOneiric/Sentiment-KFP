@@ -14,8 +14,8 @@ spec:
     - componentSpecs:
         - spec:
             containers:
-              - image: 'localhost:5000/seldon-sentiment:latest'
-                imagePullPolicy: IfNotPresent
+              - image: 'localhost:5000/seldon-sentiment:0.4'
+                imagePullPolicy: Never
                 name: sentiment
                 volumeMounts:
                   - name: model-volume
