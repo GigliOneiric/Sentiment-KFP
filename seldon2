@@ -18,7 +18,7 @@ spec:
                 imagePullPolicy: IfNotPresent
                 name: sentiment
                 volumeMounts:
-                  - name: pvc-87c46a54-7856-4586-8584-7a015c6656f2
+                  - name: kubeflow-user-example-com/model-volume
                     mountPath: /mnt
                 resources:
                   requests:
