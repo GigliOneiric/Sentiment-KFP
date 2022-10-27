@@ -40,9 +40,6 @@ spec:
                 volumeMounts:
                   - name: model-volume
                     mountPath: /mnt
-                resources:
-                  requests:
-                    memory: 1Mi
             terminationGracePeriodSeconds: 20
             volumes:
             - name: model-volume
