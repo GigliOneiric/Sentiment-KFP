@@ -14,12 +14,14 @@ spec:
     - componentSpecs:
         - spec:
             containers:
-              - image: 'localhost:5000/seldon-sentiment:0.1'
+              - image: localhost:5000/seldon-sentiment:0.1
                 imagePullPolicy: IfNotPresent
                 name: sentiment
                 resources:
                   requests:
                     memory: 1Mi
+            command: [ "/bin/bash", "-c", "--" ]
+            args: [ "while true; do sleep 30; done;" ]        
             terminationGracePeriodSeconds: 20
       graph:
         children: []
