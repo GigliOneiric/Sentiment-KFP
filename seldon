@@ -3,11 +3,11 @@ kind: SeldonDeployment
 metadata:
   labels:
     app: seldon
-  name: seldon-sentiment3
+  name: seldon-sentiment4
   namespace: kubeflow-user-example-com
 spec:
   annotations:
-    project_name: NLP Pipeline3
+    project_name: NLP Pipeline4
     deployment_version: v1
   name: seldon-sentiment
   predictors:
@@ -16,7 +16,7 @@ spec:
             containers:
               - image: 'localhost:5000/seldon-sentiment:0.1'
                 imagePullPolicy: IfNotPresent
-                name: sentiment3
+                name: sentiment4
                 volumeMounts:
                   - name: model-volume
                     mountPath: /mnt
@@ -32,9 +32,9 @@ spec:
         children: []
         endpoint:
           type: REST
-        name: sentiment3
+        name: sentiment4
         type: MODEL
-      name: sentiment3
+      name: sentiment4
       replicas: 1
       annotations:
         predictor_version: v1
