@@ -1,0 +1,31 @@
+apiVersion: machinelearning.seldon.io/v1alpha2
+kind: SeldonDeployment
+metadata:
+  name: seldon-sentiment
+  namespace: kubeflow-user-example-com
+spec:
+  name: seldon-sentiment
+  predictors:
+    - componentSpecs:
+        - spec:
+            containers:
+              - image: 'localhost:5000/seldon-sentiment:0.1'
+                imagePullPolicy: IfNotPresent
+                name: sentiment
+                command: [ "/bin/bash", "-c", "--" ]
+                args: [ "while true; do sleep 100; done;" ]
+                volumeMounts:
+                  - name: model-volume
+                    mountPath: /mnt
+            volumes:
+            - name: model-volume
+              persistentVolumeClaim:
+                claimName: model-volume
+      graph:
+        children: []
+        endpoint:
+          type: REST
+        name: sentiment
+        type: MODEL
+      name: sentiment
+      replicas: 1
