@@ -1,15 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@GigliOneiric 
-GigliOneiric
-/
-Sentiment-KFP
-Public
 apiVersion: machinelearning.seldon.io/v1
 kind: SeldonDeployment
 metadata:
