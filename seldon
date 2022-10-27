@@ -1,8 +1,8 @@
 apiVersion: machinelearning.seldon.io/v1alpha2
 kind: SeldonDeployment
 metadata:
-  name: seldon-sentiment10
-  namespace: kubeflow-user-example-com
+  name: seldon-sentiment
+  namespace: kubeflow
 spec:
   name: seldon-sentiment
   predictors:
