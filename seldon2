@@ -19,17 +19,10 @@ spec:
                 name: sentiment
                 command: [ "/bin/bash", "-c", "--" ]
                 args: [ "while true; do sleep 30; done;" ]
-                volumeMounts:
-                  - name: model-volume
-                    mountPath: /mnt
                 resources:
                   requests:
                     memory: 1Mi
             terminationGracePeriodSeconds: 20
-            volumes:
-            - name: model-volume
-              persistentVolumeClaim:
-                claimName: model-volume
       graph:
         children: []
         endpoint:
