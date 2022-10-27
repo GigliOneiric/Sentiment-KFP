@@ -26,10 +26,6 @@ spec:
                   requests:
                     memory: 1Mi
             terminationGracePeriodSeconds: 20
-            volumes:
-            - name: model-volume
-              persistentVolumeClaim:
-                claimName: model-volume
       graph:
         children: []
         endpoint:
