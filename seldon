@@ -2,12 +2,12 @@ apiVersion: machinelearning.seldon.io/v1
 kind: SeldonDeployment
 metadata:
   labels:
-    app: seldonblllfhgfhg
-  name: seldon-sentiment2
+    app: seldon
+  name: seldon-sentiment3
   namespace: kubeflow-user-example-com
 spec:
   annotations:
-    project_name: NLP Pipeline2
+    project_name: NLP Pipeline3
     deployment_version: v1
   name: seldon-sentiment
   predictors:
@@ -16,7 +16,7 @@ spec:
             containers:
               - image: 'localhost:5000/seldon-sentiment:0.1'
                 imagePullPolicy: IfNotPresent
-                name: sentiment2
+                name: sentiment3
                 volumeMounts:
                   - name: model-volume
                     mountPath: /mnt
@@ -32,9 +32,9 @@ spec:
         children: []
         endpoint:
           type: REST
-        name: sentiment2
+        name: sentiment3
         type: MODEL
-      name: sentiment2
+      name: sentiment3
       replicas: 1
       annotations:
         predictor_version: v1
