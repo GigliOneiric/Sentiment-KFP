@@ -17,8 +17,6 @@ spec:
               - image: 'localhost:5000/seldon-sentiment:0.1'
                 imagePullPolicy: IfNotPresent
                 name: sentiment999
-                command: [ "/bin/bash", "-c", "--" ]
-                args: [ "while true; do sleep 30; done;" ]
                 volumeMounts:
                   - name: model-volume
                     mountPath: /mnt
