@@ -1,3 +1,15 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@GigliOneiric 
+GigliOneiric
+/
+Sentiment-KFP
+Public
 apiVersion: machinelearning.seldon.io/v1
 kind: SeldonDeployment
 metadata:
@@ -19,10 +31,17 @@ spec:
                 name: sentiment
                 command: [ "/bin/bash", "-c", "--" ]
                 args: [ "while true; do sleep 30; done;" ]
+                volumeMounts:
+                  - name: model-volume
+                    mountPath: /mnt
                 resources:
                   requests:
                     memory: 1Mi
             terminationGracePeriodSeconds: 20
+            volumes:
+            - name: model-volume
+              persistentVolumeClaim:
+                claimName: model-volume
       graph:
         children: []
         endpoint:
