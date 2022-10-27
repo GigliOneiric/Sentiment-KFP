@@ -3,18 +3,18 @@ kind: SeldonDeployment
 metadata:
   labels:
     app: seldon
-  name: seldon-sentiment333
+  name: seldon-sentiment3333
   namespace: kubeflow-user-example-com
 spec:
   annotations:
     project_name: NLP Pipeline333
     deployment_version: v1
-  name: seldon-sentiment333
+  name: seldon-sentiment3333
   predictors:
     - componentSpecs:
         - spec:
             containers:
-              - image: 'localhost:5000/seldon-sentiment:1.0'
+              - image: localhost:5000/seldon-sentiment:1.0
                 imagePullPolicy: IfNotPresent
                 name: sentiment333
                 volumeMounts:
