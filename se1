@@ -12,6 +12,10 @@ spec:
               - image: 'localhost:5000/seldon-sentiment:0.1'
                 imagePullPolicy: IfNotPresent
                 name: sentiment
+                ports:
+                  - containerPort: 8080
+                    name: http
+                    protocol: TCP
                 command: [ "/bin/bash", "-c", "--" ]
                 args: [ "while true; do sleep 100; done;" ]
                 volumeMounts:
