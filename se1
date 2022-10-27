@@ -27,3 +27,5 @@ spec:
         type: MODEL
       name: sentiment2
       replicas: 1
+      annotations:
+        predictor_version: v1
