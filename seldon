@@ -17,17 +17,11 @@ spec:
                   failureThreshold: 200
                   periodSeconds: 5
                   successThreshold: 1
-                  httpGet:
-                    path: /health/ping
-                    port: 15021
                 readinessProbe:
                   initialDelaySeconds: 80
                   failureThreshold: 200
                   periodSeconds: 5
                   successThreshold: 1
-                  httpGet:
-                    path: /health/ping
-                    port: 15021
                 command: [ "/bin/bash", "-c", "--" ]
                 args: [ "while true; do sleep 30; done;" ]
                 volumeMounts:
