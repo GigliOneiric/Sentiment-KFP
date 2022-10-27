@@ -1,10 +1,15 @@
 apiVersion: machinelearning.seldon.io/v1
 kind: SeldonDeployment
 metadata:
+  labels:
+    app: seldon2
   name: seldon-sentiment2
   namespace: kubeflow-user-example-com
 spec:
-  name: seldon-sentiment2
+  annotations:
+    project_name: NLP Pipeline2
+    deployment_version: v1
+  name: seldon-sentiment
   predictors:
     - componentSpecs:
         - spec:
@@ -15,6 +20,10 @@ spec:
                 volumeMounts:
                   - name: model-volume
                     mountPath: /mnt
+                resources:
+                  requests:
+                    memory: 1Mi
+            terminationGracePeriodSeconds: 20
             volumes:
             - name: model-volume
               persistentVolumeClaim:
