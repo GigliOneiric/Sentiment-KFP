@@ -18,18 +18,18 @@ spec:
                 imagePullPolicy: IfNotPresent
                 name: sentiment
                 livenessProbe:
-                  initialDelaySeconds: 80
-                  failureThreshold: 200
-                  periodSeconds: 5
+                  initialDelaySeconds: 160
+                  failureThreshold: 400
+                  periodSeconds: 10
                   successThreshold: 1
                   httpGet:
                     path: /health/ping
                     port: http
                     scheme: HTTP
                 readinessProbe:
-                  initialDelaySeconds: 80
-                  failureThreshold: 200
-                  periodSeconds: 5
+                  initialDelaySeconds: 160
+                  failureThreshold: 400
+                  periodSeconds: 10
                   successThreshold: 1
                   httpGet:
                     path: /health/ping
