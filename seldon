@@ -16,7 +16,7 @@ spec:
             containers:
               - image: 'localhost:5000/seldon-sentiment:0.1'
                 imagePullPolicy: IfNotPresent
-                name: sentiment
+                name: sentiment2
                 volumeMounts:
                   - name: model-volume
                     mountPath: /mnt
