@@ -19,8 +19,7 @@ spec:
                   successThreshold: 1
                   httpGet:
                     path: /health/ping
-                    port: http
-                    scheme: HTTP
+                    port: 15021
                 readinessProbe:
                   initialDelaySeconds: 80
                   failureThreshold: 200
@@ -28,8 +27,7 @@ spec:
                   successThreshold: 1
                   httpGet:
                     path: /health/ping
-                    port: http
-                    scheme: HTTP
+                    port: 15021
                 command: [ "/bin/bash", "-c", "--" ]
                 args: [ "while true; do sleep 30; done;" ]
                 volumeMounts:
