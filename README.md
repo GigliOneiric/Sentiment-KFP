@@ -5,11 +5,11 @@ Sentiment KLP is an open source analysis software used to perform sentiment anal
 
 1. Go to Kubeflow Dashboard and on the left panel click on Volumes.
 
-2. Click on the “+ New Notebook” button on the top right and create a notebook by giving it a name.
+2. Click on the “+ New Volume” button on the top right and create a volume by giving the name “model-volume”. 
 
 3. Go to Kubeflow Dashboard and on the left panel click on Notebooks.
 
-4. Click on the “+ New Volume” button on the top right and create a volume by giving the name “model-volume”. 
+4. Click on the “+ New Notebook” button on the top right and create a notebook by giving it a name.
 
 5. After the set up is done, click on the Connect button next to the notebook you just created. It will take you to a JupyterLab.
 
