@@ -63,8 +63,13 @@ docker tag seldon-sentiment:latest  localhost:5000/seldon-sentiment:latest
 docker push localhost:5000/seldon-sentiment:latest 
 ```
 6. Creation of a SeldonDeployment
+* Create the SeldonDeployment
 ```
 kubectl apply -f https://raw.githubusercontent.com/GigliOneiric/Sentiment-KFP/main/seldon/SeldonDeployment.yml
+```
+* Verify the SeldonDeployment
+```
+kubectl get sdep -n kubeflow-user-example-com seldon-sentiment -o json | jq .status 
 ```
 
 7. Set up port forwarding
