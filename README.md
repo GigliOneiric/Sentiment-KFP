@@ -73,6 +73,7 @@ tmux new -d -s seldon "kubectl port-forward $(kubectl get pods -l istio=ingressg
 ```
 
 8. Test the SeldonDeployment
+
 8.1 Read the session cookie from the Kubeflow dashboard in the developer mode of the browser
 ```
 document.cookie
