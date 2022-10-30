@@ -18,3 +18,49 @@ Sentiment KLP is an open source analysis software used to perform sentiment anal
  ```$ git clone https://github.com/GigliOneiric/Sentiment-KFP.git``` 
 
 7. After succesfully cloning the repo open the notebook named "Main.ipynb" by double-clicking on this name in the left hand directory structure, and to run it click on the "restart the whole kernel and re-reun the whole notebook" button in the top menu of the notebook.
+
+# Optional: Setup Seldon Core
+
+1 . Label the namespace for inference tasks in kubernetes
+```
+kubectl label namespace kubeflow-user-example-com serving.kubeflow.org/inferenceservice=enabled
+```
+
+2. Install s2i
+```
+# Create a directory
+mkdir /tmp/s2i/ && cd /tmp/s2i/
+
+# Download S2I
+curl -s https://api.github.com/repos/openshift/source-to-image/releases/latest| grep browser_download_url | grep linux-amd64 | cut -d '"' -f 4  | wget -qi -
+
+# Unpack the tar
+tar xvf source-to-image*.gz
+
+# Move it to /usr/local/bin path to be executable
+sudo mv s2i /usr/local/bin
+rm -rf /tmp/s2i/
+```
+
+3. Copy the container folder to any directory on kubernetes
+
+4. Creation of an image within the container directory copied previously
+```
+s2i build . seldonio/seldon-core-s2i-python38:1.10.0 seldon-sentiment:latest
+```
+
+5. Deploying the image in the Docker Registery
+```
+# Start the registry
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+# Tag the image so that it points to the registry
+docker tag seldon-sentiment:latest  localhost:5000/seldon-sentiment:latest 
+
+# Push the image
+docker push localhost:5000/seldon-sentiment:latest 
+```
+6. Creation of a SeldonDeployment
+```
+kubectl apply -f https://raw.githubusercontent.com/GigliOneiric/Sentiment-KFP/main/seldon/SeldonDeployment.yml
+```
