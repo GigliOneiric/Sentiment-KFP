@@ -50,14 +50,19 @@ sudo mv s2i /usr/local/bin
 rm -rf /tmp/s2i/
 ```
 
-3. Copy the container folder to any directory on kubernetes
+3. Install Docker
+```
+apt install docker.io
+```
 
-4. Creation of an image within the container directory copied previously
+4. Copy the container folder to any directory on kubernetes
+
+5. Creation of an image within the container directory copied previously
 ```
 s2i build . seldonio/seldon-core-s2i-python38:1.10.0 seldon-sentiment:latest
 ```
 
-5. Deploying the image in the Docker Registery
+6. Deploying the image in the Docker Registery
 ```
 # Start the registry
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
@@ -68,7 +73,7 @@ docker tag seldon-sentiment:latest  localhost:5000/seldon-sentiment:latest
 # Push the image
 docker push localhost:5000/seldon-sentiment:latest 
 ```
-6. Creation of a SeldonDeployment
+7. Creation of a SeldonDeployment
 * Create the SeldonDeployment
 ```
 kubectl apply -f https://raw.githubusercontent.com/GigliOneiric/Sentiment-KFP/main/seldon/SeldonDeployment.yml
@@ -78,12 +83,12 @@ kubectl apply -f https://raw.githubusercontent.com/GigliOneiric/Sentiment-KFP/ma
 kubectl get sdep -n kubeflow-user-example-com seldon-sentiment -o json | jq .status 
 ```
 
-7. Set up port forwarding
+8. Set up port forwarding
 ```
 tmux new -d -s seldon "kubectl port-forward $(kubectl get pods -l istio=ingressgateway -n istio-system -o jsonpath='{.items[0].metadata.name}') -n istio-system 8050:8080 --address 0.0.0.0"
 ```
 
-8. Test the SeldonDeployment
+9. Test the SeldonDeployment
 
 * Read the session cookie from the Kubeflow dashboard in the developer mode of the browser
  ```
