@@ -25,7 +25,7 @@ kubectl apply -f https://raw.githubusercontent.com/GigliOneiric/Sentiment-KFP/ma
  $ git clone https://github.com/GigliOneiric/Sentiment-KFP.git
  ``` 
 
-9. After succesfully cloning the repo open the notebook named "Main.ipynb" by double-clicking on this name in the left hand directory structure, and to run it click on the "restart the whole kernel and re-reun the whole notebook" button in the top menu of the notebook.
+9. After succesfully cloning the repo open the notebook named "BiGRU.ipynb" by double-clicking on this name in the left hand directory structure, and to run it click on the "restart the whole kernel and re-reun the whole notebook" button in the top menu of the notebook.
 
 # Optional: Setup Seldon Core
 
